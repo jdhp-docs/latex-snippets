@@ -1,7 +1,5 @@
-.DS_Store
-article.pdf
-article.html
-article.image.tex
+# LATEX GENERATED FILES #######################################################
+
 *.aux
 *.bbl
 *.blg
@@ -14,6 +12,27 @@ article.image.tex
 *.snm
 *.toc
 *.vrb
+*.pdf
+!figs/*.pdf
+
+# HEVEA GENERATED FILES #######################################################
+
 *.haux
 *.htoc
 *.hbbl
+*.html
+*.image.tex
+
+# COMMON ######################################################################
+
+# Vim swap files
+*.swp
+
+# Emacs temporary files
+*~
+
+# MacOSX Thumbnail files
+.DS_Store
+
+# Windows Thumbnail files
+Thumbs.db
