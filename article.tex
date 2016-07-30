@@ -101,70 +101,6 @@ tiny
 {\color{green} Green}
 {\color{blue} Blue}
 
-
-\subsection{Image}\label{subsec:image}
-
-\begin{figure}
-    \centering
-    \ifpdf
-    \includegraphics[width=.80\linewidth]{fig/test.pdf}
-    \else
-    \imgsrc{fig/test.png}
-    \fi
-    \caption{\label{fig:test}Test}
-\end{figure}
-
-
-\subsection{Subfigures}\label{subsec:subfig}
-
-\begin{figure}
-    \centering
-    \subfigure{
-        \ifpdf
-        \includegraphics[width=.30\linewidth,height=.20\linewidth]{fig/test}
-        \else
-        \imgsrc{fig/test.png}
-        \fi
-    }~
-    \subfigure{
-        \ifpdf
-        \includegraphics[width=.30\linewidth,height=.20\linewidth]{fig/test}
-        \else
-        \imgsrc{fig/test.png}
-        \fi
-    }~
-    \subfigure{
-        \ifpdf
-        \includegraphics[width=.30\linewidth,height=.20\linewidth]{fig/test}
-        \else
-        \imgsrc{fig/test.png}
-        \fi
-    }
-    ~\\
-    \subfigure{
-        \ifpdf
-        \includegraphics[width=.30\linewidth,height=.20\linewidth]{fig/test}
-        \else
-        \imgsrc{fig/test.png}
-        \fi
-    }~
-    \subfigure{
-        \ifpdf
-        \includegraphics[width=.30\linewidth,height=.20\linewidth]{fig/test}
-        \else
-        \imgsrc{fig/test.png}
-        \fi
-    }~
-    \subfigure{
-        \ifpdf
-        \includegraphics[width=.30\linewidth,height=.20\linewidth]{fig/test}
-        \else
-        \imgsrc{fig/test.png}
-        \fi
-    }
-\end{figure}
-
-
 \subsection{Equations}\label{subsec:eq}
 
 $$
@@ -331,15 +267,6 @@ $$
     \RETURN $U$
 \end{algorithmic}
 
-
-\subsection{Listings}\label{subsec:listings}
-
-\begin{small}
-    \lstinputlisting[language=Python]{listings/test.py}
-    %\lstinputlisting[language=Python, firstline=2, lastline=5]{listings/test.py}
-\end{small}
-
-
 \subsection{Verbatim}\label{subsec:verbatim}
 
 \begin{verbatim}
@@ -402,7 +329,7 @@ Rate by active learning   & ${\color{blue} \alpha} = \frac{1}{2}$        & ${\co
     % PDF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \vfill % Go to the bottom of the page...
     \begin{center}
-        \href{http://creativecommons.org/licenses/by-sa/4.0/}{\includegraphics[width=.15\linewidth]{fig/cc_by_sa_small}}\\
+        \href{http://creativecommons.org/licenses/by-sa/4.0/}{\includegraphics[width=.15\linewidth]{figs/cc_by_sa_small}}\\
         \small{Creative Commons BY-SA}
     \end{center}
 

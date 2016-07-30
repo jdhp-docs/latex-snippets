@@ -47,7 +47,7 @@ jdhp:$(NAME).pdf $(NAME).html
 	@rm -rf $(JDHP_HEVEA_DIR)/$(NAME)
 	@mkdir $(JDHP_HEVEA_DIR)/$(NAME)
 	cp -v $(NAME).html $(JDHP_HEVEA_DIR)/$(NAME)
-	cp -vr fig $(JDHP_HEVEA_DIR)/$(NAME)
+	cp -vr figs $(JDHP_HEVEA_DIR)/$(NAME)
 	# Sync
 	$(JDHP_UPLOAD_PDF_SCRIPT)
 	$(JDHP_UPLOAD_HEVEA_SCRIPT)
