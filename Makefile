@@ -16,7 +16,7 @@ all: $(NAME).pdf
 ## ARTICLE ##
 
 SRCARTICLE=$(NAME).tex\
-		   article_packages.tex\
+		   setup_packages.tex\
 		   macros.tex\
 		   macros_common.tex\
 		   setup_package_tikz.tex\
