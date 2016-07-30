@@ -1,0 +1,62 @@
+% COMMON MACROS
+
+% Utils %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\renewcommand{\vec}[1]{\ensuremath{\boldsymbol{#1}}} % bold vectors
+
+% Pour desactiver temporairement les images (compile beaucoup plus vite)
+%\renewcommand{\includegraphics}[2][]{\null}
+
+% Math symbols %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\texrealset{{\rm I\!R}}      % Plain-TeX real set symbol
+\def\amsrealset{{\mathbb{R}}}    % Amssymb real set symbol
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{{\texrealset}{}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\E}{\mathbb{E}}
+
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mfrac}[1]{\mathfrak{#1}}
+
+\newcommand{\ch}{\mathop{\mathrm{ch}}\nolimits}
+\newcommand{\sh}{\mathop{\mathrm{sh}}\nolimits}
+
+\newcommand{\alias}{\triangleq}
+\newcommand{\then}{\Rightarrow}
+
+\newcommand\CQFD{\fbox\\}
+
+% Math macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\vs}[1]{\boldsymbol{#1}} % vector symbol (\boldsymbol, \textbf or \vec)
+\newcommand{\ms}[1]{\boldsymbol{#1}} % matrix symbol (\boldsymbol, \textbf)
+
+\newcommand{\deriv}[2]{\frac{d {#1}}{d {#2}}}             % derivative
+\newcommand{\pd}[2]{\frac{\partial {#1}}{\partial {#2}}}  % partial derivative
+
+\newcommand*\mean[1]{\overline{#1}}
+
+\newenvironment{jmatrix}{\renewcommand\arraystretch{1.5} \begin{pmatrix}}{\end{pmatrix}}
+
+% General macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\todo}[1][\dots]{\textbf{[TODO : #1]}}  % todo mark
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\dontforget}[1]{\textcolor{red}{#1}}
+\newcommand{\ech}[1]{\textcolor{gray}{#1}}
+\newcommand{\imp}[1]{{\em {#1}}}
+\newcommand{\voc}[1]{{\em {#1}}}
+
+% Debug macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Display the current table counter (cf. http://www.iam.ubc.ca/old_pages/newbury/tex/numbering.html)
+\newcommand{\tablecounterdebug}{\textbf{Table~counter:~\thetable}\\}
+\newcommand{\equationcounterdebug}{\textbf{Equation~counter:~\theequation}\\}
+\newcommand{\figurecounterdebug}{\textbf{Figure~counter:~\thefigure}\\}
+\newcommand{\algorithmcounterdebug}{\textbf{Algorithm~counter:~\thealgorithm}\\}
