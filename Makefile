@@ -1,4 +1,4 @@
-NAME=article
+NAME=main
 
 JDHP_PDF_DIR=~/git/pub/jdhp/files/pdf
 #JDHP_HEVEA_DIR=~/git/pub/jdhp/files/hevea
