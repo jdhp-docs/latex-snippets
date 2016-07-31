@@ -43,9 +43,9 @@ $(FILE_BASE_NAME).pdf: $(SRCARTICLE) $(SRCTIKZ)
 html: $(FILE_BASE_NAME).html
 
 $(FILE_BASE_NAME).html: $(SRCARTICLE) $(SRCTIKZ)
-	hevea -fix -o $(FILE_BASE_NAME) main.tex
+	hevea -fix -o $(FILE_BASE_NAME).html main.tex
 	bibhva $(FILE_BASE_NAME)            # this is the name of the .aux file, not the .bib file !
-	hevea -fix -o $(FILE_BASE_NAME) main.tex
+	hevea -fix -o $(FILE_BASE_NAME).html main.tex
 
 # PUBLISH #####################################################################
 
