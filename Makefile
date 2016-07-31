@@ -83,6 +83,7 @@ clean:
 	@echo "Remove generated files"
 	@rm -f *.log *.aux *.dvi *.toc *.lot *.lof *.out *.nav *.snm *.bbl *.blg *.vrb
 	@rm -f *.haux *.htoc *.hbbl $(FILE_BASE_NAME).image.tex
+	@rm -rf $(HTML_TMP_DIR)
 
 init: clean
 	@echo "Remove target files"
