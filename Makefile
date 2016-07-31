@@ -1,67 +1,92 @@
-NAME=main
+include meta.make
 
-JDHP_PDF_DIR=~/git/pub/jdhp/files/pdf
-#JDHP_HEVEA_DIR=~/git/pub/jdhp/files/hevea
-# HEVEA doit être mis dans www plutot que dans download pour les stats et le référencement...
-JDHP_HEVEA_DIR=~/git/pub/jdhp/jdhp/hevea
-JDHP_UPLOAD_PDF_SCRIPT=~/git/pub/jdhp/files_upload.sh
-JDHP_UPLOAD_HEVEA_SCRIPT=~/git/pub/jdhp/jdhp/sync_hevea.sh
+###############################################################################
 
-#############
+all: $(FILE_BASE_NAME).pdf
 
-all: $(NAME).pdf
+.PHONY : all clean init pdf ps html jdhp publish
 
-.PHONY : all clean init jdhp
-
-## ARTICLE ##
-
-SRCARTICLE=$(NAME).tex\
-		   setup_packages.tex\
+SRCARTICLE=macros_common.tex\
 		   macros.tex\
-		   macros_common.tex\
-		   setup_package_tikz.tex\
-		   setup_package_listings.tex\
-		   bibliography.bib
+		   bibliography.bib\
+		   setup_package*.tex\
+		   main.tex\
+		   content/*.tex
 
-$(NAME).pdf: $(SRCARTICLE)
-	pdflatex $(NAME).tex
-	bibtex $(NAME)     # this is the name of the .aux file, not the .bib file !
-	pdflatex $(NAME).tex
-	pdflatex $(NAME).tex
+SRCTIKZ=
 
-$(NAME).ps: $(SRCARTICLE)
-	latex $(NAME).tex
-	bibtex $(NAME)     # this is the name of the .aux file, not the .bib file !
-	latex $(NAME).tex
-	latex $(NAME).tex
-	dvips $(NAME).dvi
+###############################################################################
 
-$(NAME).html: $(SRCARTICLE)
-	hevea -fix $(NAME).tex
-	bibhva $(NAME)     # this is the name of the .aux file, not the .bib file !
-	hevea -fix $(NAME).tex
+# PDF #############
 
-jdhp:$(NAME).pdf $(NAME).html
-	# Copy PDF
-	cp -v $(NAME).pdf  $(JDHP_PDF_DIR)/
+pdf: $(FILE_BASE_NAME).pdf
+
+$(FILE_BASE_NAME).pdf: $(SRCARTICLE) $(SRCTIKZ)
+	pdflatex -jobname=$(FILE_BASE_NAME) main.tex
+	bibtex $(FILE_BASE_NAME)            # this is the name of the .aux file, not the .bib file !
+	pdflatex -jobname=$(FILE_BASE_NAME) main.tex
+	pdflatex -jobname=$(FILE_BASE_NAME) main.tex
+
+# PS ##############
+
+ps: $(FILE_BASE_NAME).ps
+
+$(FILE_BASE_NAME).ps: $(SRCARTICLE) $(SRCTIKZ)
+	latex -jobname=$(FILE_BASE_NAME) main.tex
+	bibtex $(FILE_BASE_NAME)            # this is the name of the .aux file, not the .bib file !
+	latex -jobname=$(FILE_BASE_NAME) main.tex
+	latex -jobname=$(FILE_BASE_NAME) main.tex
+	dvips $(FILE_BASE_NAME).dvi
+
+# HTML ############
+
+html: $(FILE_BASE_NAME).html
+
+$(FILE_BASE_NAME).html: $(SRCARTICLE) $(SRCTIKZ)
+	hevea -fix $(FILE_BASE_NAME).tex
+	bibhva $(FILE_BASE_NAME)            # this is the name of the .aux file, not the .bib file !
+	hevea -fix $(FILE_BASE_NAME).tex
+
+# PUBLISH #####################################################################
+
+publish: jdhp
+
+jdhp:$(FILE_BASE_NAME).pdf $(FILE_BASE_NAME).html
+
+	# PDF #############
+	
+	# JDHP_DL_URI is a shell environment variable that contains the destination
+	# URI of the PDF files.
+	@if test -z $$JDHP_DL_URI ; then exit 1 ; fi
+	
+	# Upload the PDF file
+	rsync -v -e ssh $(FILE_BASE_NAME).pdf ${JDHP_DL_URI}/pdf/
+
+	# HTML ############
+	
+	# JDHP_DOCS_URI is a shell environment variable that contains the
+	# destination URI of the HTML files.
+	@if test -z $$JDHP_DOCS_URI ; then exit 1 ; fi
+
 	# Copy HTML
-	@rm -rf $(JDHP_HEVEA_DIR)/$(NAME)
-	@mkdir $(JDHP_HEVEA_DIR)/$(NAME)
-	cp -v $(NAME).html $(JDHP_HEVEA_DIR)/$(NAME)
-	cp -vr figs $(JDHP_HEVEA_DIR)/$(NAME)
-	# Sync
-	$(JDHP_UPLOAD_PDF_SCRIPT)
-	$(JDHP_UPLOAD_HEVEA_SCRIPT)
+	@rm -rf $(HTML_TMP_DIR)/
+	@mkdir $(HTML_TMP_DIR)/
+	cp -v $(FILE_BASE_NAME).html $(HTML_TMP_DIR)/
+	cp -vr images $(HTML_TMP_DIR)/
 
-## CLEAN ##
+	# Upload the HTML files
+	rsync -r -v -e ssh $(HTML_TMP_DIR)/ ${JDHP_DOCS_URI}/$(FILE_BASE_NAME)/
+
+## CLEAN ######################################################################
 
 clean:
-	@echo "suppression des fichiers de compilation"
+	@echo "Remove generated files"
 	@rm -f *.log *.aux *.dvi *.toc *.lot *.lof *.out *.nav *.snm *.bbl *.blg *.vrb
-	@rm -f *.haux *.htoc *.hbbl $(NAME).image.tex
+	@rm -f *.haux *.htoc *.hbbl $(FILE_BASE_NAME).image.tex
 
 init: clean
-	@echo "suppression des fichiers cibles"
-	@rm -f $(NAME).pdf
-	@rm -f $(NAME).ps
-	@rm -f $(NAME).html
+	@echo "Remove target files"
+	@rm -f $(FILE_BASE_NAME).pdf
+	@rm -f $(FILE_BASE_NAME).ps
+	@rm -f $(FILE_BASE_NAME).html
+
