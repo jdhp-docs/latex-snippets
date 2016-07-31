@@ -1,1 +1,3 @@
 FILE_BASE_NAME=TODO
+
+HTML_TMP_DIR="html_tmp"

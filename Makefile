@@ -29,23 +29,23 @@ $(FILE_BASE_NAME).pdf: $(SRCARTICLE) $(SRCTIKZ)
 
 # PS ##############
 
-ps: $(FILE_BASE_NAME).ps
-
-$(FILE_BASE_NAME).ps: $(SRCARTICLE) $(SRCTIKZ)
-	latex -jobname=$(FILE_BASE_NAME) main.tex
-	bibtex $(FILE_BASE_NAME)            # this is the name of the .aux file, not the .bib file !
-	latex -jobname=$(FILE_BASE_NAME) main.tex
-	latex -jobname=$(FILE_BASE_NAME) main.tex
-	dvips $(FILE_BASE_NAME).dvi
+#ps: $(FILE_BASE_NAME).ps
+#
+#$(FILE_BASE_NAME).ps: $(SRCARTICLE) $(SRCTIKZ)
+#	latex -jobname=$(FILE_BASE_NAME) main.tex
+#	bibtex $(FILE_BASE_NAME)            # this is the name of the .aux file, not the .bib file !
+#	latex -jobname=$(FILE_BASE_NAME) main.tex
+#	latex -jobname=$(FILE_BASE_NAME) main.tex
+#	dvips $(FILE_BASE_NAME).dvi
 
 # HTML ############
 
 html: $(FILE_BASE_NAME).html
 
 $(FILE_BASE_NAME).html: $(SRCARTICLE) $(SRCTIKZ)
-	hevea -fix $(FILE_BASE_NAME).tex
+	hevea -fix -o $(FILE_BASE_NAME) main.tex
 	bibhva $(FILE_BASE_NAME)            # this is the name of the .aux file, not the .bib file !
-	hevea -fix $(FILE_BASE_NAME).tex
+	hevea -fix -o $(FILE_BASE_NAME) main.tex
 
 # PUBLISH #####################################################################
 
@@ -72,7 +72,7 @@ jdhp:$(FILE_BASE_NAME).pdf $(FILE_BASE_NAME).html
 	@rm -rf $(HTML_TMP_DIR)/
 	@mkdir $(HTML_TMP_DIR)/
 	cp -v $(FILE_BASE_NAME).html $(HTML_TMP_DIR)/
-	cp -vr images $(HTML_TMP_DIR)/
+	cp -vr figs $(HTML_TMP_DIR)/
 
 	# Upload the HTML files
 	rsync -r -v -e ssh $(HTML_TMP_DIR)/ ${JDHP_DOCS_URI}/$(FILE_BASE_NAME)/
