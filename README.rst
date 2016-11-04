@@ -1,10 +1,11 @@
 ====
-TODO
+TODO_DOCUMENT_TITLE
 ====
 
-Copyright (c) 2016 Jeremie DECOCK (http://www.jdhp.org)
+TODO_COPYRIGHT_NOTICE
 
-* HTML: http://www.jdhp.org/docs/TODO
-* PDF: http://www.jdhp.org/dl/pdf/TODO
-* Source code: https://github.com/TODO
+* Read online: TODO_DOCUMENT_HTML_URL
+* PDF version: TODO_DOCUMENT_PDF_URL
+* Abstract on JDHP: TODO_DOCUMENT_WEB_SITE_URL
+* Source code: TODO_DOCUMENT_GITHUB_URL
 
