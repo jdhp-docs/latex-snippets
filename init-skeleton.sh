@@ -12,8 +12,8 @@ TODO_AUTHORS_TITLE_PAGE="Jérémie \\textsc{Decock} \\\\ \\url{http://www.jdhp.o
 
 TODO_DOCUMENT_DATE="September 1, 2016"          # TODO
 
-#TODO_INSTITUTE="\\textsuperscript{1}TAO, INRIA-CNRS-LRI, Univ. Paris-Sud, 91190 Gif-sur-Yvette, France"          # TODO
-#TODO_INSTITUTE="CEA Saclay - Irfu/SAp"         # TODO
+#TODO_INSTITUTE="\\textsuperscript{1}TAO, INRIA-CNRS-LRI, Univ. Paris-Sud, 91190 Gif-sur-Yvette, France"
+#TODO_INSTITUTE="CEA Saclay - Irfu/SAp"
 TODO_INSTITUTE="TODO"                           # TODO
 
 TODO_DOCUMENT_SUBJECT="TODO"                    # TODO
