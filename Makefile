@@ -8,6 +8,7 @@ all: $(FILE_BASE_NAME).pdf
 
 SRCARTICLE=macros_common.tex\
 		   macros.tex\
+		   meta.tex\
 		   bibliography.bib\
 		   setup_package*.tex\
 		   main.tex\
@@ -52,8 +53,27 @@ $(FILE_BASE_NAME).html: $(SRCARTICLE) $(SRCTIKZ)
 publish: jdhp
 
 jdhp:$(FILE_BASE_NAME).pdf $(FILE_BASE_NAME).html
-
-	# PDF #############
+	
+	########
+	# HTML #
+	########
+	
+	# JDHP_DOCS_URI is a shell environment variable that contains the
+	# destination URI of the HTML files.
+	@if test -z $$JDHP_DOCS_URI ; then exit 1 ; fi
+	
+	# Copy HTML
+	@rm -rf $(HTML_TMP_DIR)/
+	@mkdir $(HTML_TMP_DIR)/
+	cp -v $(FILE_BASE_NAME).html $(HTML_TMP_DIR)/
+	cp -vr figs $(HTML_TMP_DIR)/
+	
+	# Upload the HTML files
+	rsync -r -v -e ssh $(HTML_TMP_DIR)/ ${JDHP_DOCS_URI}/$(FILE_BASE_NAME)/
+	
+	#######
+	# PDF #
+	#######
 	
 	# JDHP_DL_URI is a shell environment variable that contains the destination
 	# URI of the PDF files.
@@ -61,21 +81,6 @@ jdhp:$(FILE_BASE_NAME).pdf $(FILE_BASE_NAME).html
 	
 	# Upload the PDF file
 	rsync -v -e ssh $(FILE_BASE_NAME).pdf ${JDHP_DL_URI}/pdf/
-
-	# HTML ############
-	
-	# JDHP_DOCS_URI is a shell environment variable that contains the
-	# destination URI of the HTML files.
-	@if test -z $$JDHP_DOCS_URI ; then exit 1 ; fi
-
-	# Copy HTML
-	@rm -rf $(HTML_TMP_DIR)/
-	@mkdir $(HTML_TMP_DIR)/
-	cp -v $(FILE_BASE_NAME).html $(HTML_TMP_DIR)/
-	cp -vr figs $(HTML_TMP_DIR)/
-
-	# Upload the HTML files
-	rsync -r -v -e ssh $(HTML_TMP_DIR)/ ${JDHP_DOCS_URI}/$(FILE_BASE_NAME)/
 
 ## CLEAN ######################################################################
 
