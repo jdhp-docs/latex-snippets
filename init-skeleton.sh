@@ -8,7 +8,7 @@ TODO_AUTHOR_WEB_SITE="www.jdhp.org"
 
 TODO_COPYRIGHT_NOTICE="Copyright (c) 2016 ${TODO_AUTHOR_NAME} (${TODO_AUTHOR_WEB_SITE})"
 
-TODO_AUTHORS_TITLE_PAGE="Jérémie \\textsc{Decock} \\\\ \\url{http://www.jdhp.org}"
+TODO_AUTHORS_TITLE_PAGE="Jérémie \\\\textsc{Decock} \\\\\\\\ \\\\url{http://www.jdhp.org}"
 
 TODO_DOCUMENT_DATE="September 1, 2016"          # TODO
 
