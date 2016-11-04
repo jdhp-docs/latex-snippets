@@ -2,11 +2,18 @@
 
 ## Skeleton
 
+- [ ] Improve HeVeA rendering:
+    - [ ] Improve maths rendering (images ? MathJax ? MathML ?)
+    - [ ] Improve algorithm/algorithmic packages rendering
+    - [ ] Find something more convenient for images than having both a PDF
+          version for pdflatex and a PNG version for HeVeA... (a least make
+          it easier to use with a home made LaTeX  "command")
+- [ ] Try alternatives to HeVeA (pandoc ? ...)
 - [ ] Add a makefile in "figs/" to make/clean figures from scripts (Python,
       ...)
-- [ ] Make a snippets document in a dedicated git repository
+- [x] Make a snippets document in a dedicated git repository
 - [ ] Update the French version
-- [ ] Use git-submodules for logos (figs/logos/) (institutions, CC, ...),
+- [x] Use git-submodules for logos (figs/logos/) (institutions, CC, ...),
       bibliography (bibliography/), ... + init them in init_skeleton.sh
 - [ ] Add Disqus (or equivalent) in generated HTML pages
 - [ ] Improve the init_skeleton.sh script (add safety checks: are the variable

@@ -8,7 +8,7 @@ TODO_AUTHOR_WEB_SITE="www.jdhp.org"
 
 TODO_COPYRIGHT_NOTICE="Copyright (c) 2016 ${TODO_AUTHOR_NAME} (${TODO_AUTHOR_WEB_SITE})"
 
-TODO_AUTHORS_TITLE_PAGE="Jérémie \\textsc{Decock} \\\\ \\url{http://www.jdhp.org}"
+TODO_AUTHORS_TITLE_PAGE="Jérémie \\\\textsc{Decock} \\\\\\\\ \\\\url{http://www.jdhp.org}"
 
 TODO_DOCUMENT_DATE="November 4, 2016"
 
@@ -32,6 +32,8 @@ TODO_DOCUMENT_ISSUE_TRACKER_URL="https://github.com/${TODO_DOCUMENT_GITHUB_ACCOU
 TODO_DOCUMENT_WEB_SITE_URL="http://www.jdhp.org/documentation_en.html#${TODO_DOCUMENT_FILE_BASE_NAME}"
 TODO_DOCUMENT_HTML_URL="http://www.jdhp.org/docs/${TODO_DOCUMENT_FILE_BASE_NAME}/${TODO_DOCUMENT_FILE_BASE_NAME}.html"
 TODO_DOCUMENT_PDF_URL="http://www.jdhp.org/dl/pdf/${TODO_DOCUMENT_FILE_BASE_NAME}.pdf"
+
+TODO_HTML_TMP_DIR="html_tmp"
 
 
 # SETUP GIT ###################################################################
